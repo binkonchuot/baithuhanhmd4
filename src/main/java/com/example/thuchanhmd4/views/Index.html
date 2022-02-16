@@ -155,7 +155,6 @@
                     <div class="form-group">
                         <label for="deleteCountry">Country:</label>
                         <select id="deleteCountry" class="form-control">
-
                         </select>
                     </div>
                 </div>
@@ -170,6 +169,56 @@
         </div>
     </div>
 
+
+    <!-- Detail Modal -->
+    <div class="modal fade" id="detail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">City's detail</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="deleteName">City:</label>
+                        <input type="text" class="form-control" id="detailName">
+                    </div>
+                    <div class="form-group">
+                        <label for="editArea">Area:</label>
+                        <input type="text" class="form-control" id="detailArea">
+                    </div>
+                    <div class="form-group">
+                        <label for="editPopulation">Population:</label>
+                        <input type="text" class="form-control" id="detailPopulation">
+                    </div>
+                    <div class="form-group">
+                        <label for="editGdp">GDP:</label>
+                        <input type="text" class="form-control" id="detailGdp">
+                    </div>
+                    <div class="form-group">
+                        <label for="editDescription">Description:</label>
+                        <input type="text" class="form-control" id="detailDescription">
+                    </div>
+                    <div class="form-group">
+                        <label for="editCountry">Country:</label>
+                        <select id="detailCountry" class="form-control">
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
     <div class="container" style="margin-top:30px">
 
         <h2>City Manager</h2>
@@ -254,7 +303,7 @@
                 for (let i = 0; i < data.length; i++) {
                     str += "<tr>"
                     str += `<td>${data[i].id}</td>`
-                    str += `<td>${data[i].name}</td>`
+                    str += `<td><a onclick="detail(${data[i].id})" value="123"  data-toggle="modal" data-target="#detail">${data[i].name}</td>`
                     str += `<td>${data[i].area}</td>`
                     str += `<td>${data[i].population}</td>`
                     str += `<td>${data[i].gdp}</td>`
@@ -290,7 +339,24 @@
             }
         })
     }
-
+    function detail(id) {
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/home/"+id,
+            success: function (data) {
+                console.log(data);
+                document.getElementById("detailName").value = data.name;
+                document.getElementById("detailArea").value = data.area;
+                document.getElementById("detailPopulation").value = data.population;
+                document.getElementById("detailGdp").value = data.gdp;
+                document.getElementById("detailDescription").value = data.description;
+                document.getElementById("detailCountry").value = data.country;
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        })
+    }
     function showDelete(id) {
         $.ajax({
             type: "GET",
@@ -400,6 +466,7 @@
             }
         }
     console.log(city);
+
 
         $.ajax({
             type: "PUT",
