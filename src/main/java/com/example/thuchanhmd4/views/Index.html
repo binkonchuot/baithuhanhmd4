@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+<div>
+    <!-- Create Modal -->
+    <div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal create</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="createName">Name:</label>
+                        <input type="text" class="form-control" id="createName">
+                    </div>
+                    <div class="form-group">
+                        <label for="createArea">Area:</label>>
+                        <input type="text" class="form-control" id="createArea">
+                    </div>
+                    <div class="form-group">
+                        <label for="createPopulation">Population:</label>
+                        <input type="text" class="form-control" id="createPopulation">
+                    </div>
+                    <div class="form-group">
+                        <label for="createGdp">Gdp:</label>
+                        <input type="text" class="form-control" id="createGdp">
+                    </div>
+                    <div class="form-group">
+                        <label for="createDescription">Description:</label>
+                        <input type="text" class="form-control" id="createDescription">
+                    </div>
+                    <div class="form-group">
+                        <label for="createCountry">Country:</label>
+                        <select id="createCountry" class="form-control">
+                        </select>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="create()" data-dismiss="modal">Save
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal Edit</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <input type="number" hidden id="editId">
+                    <div class="form-group">
+                        <label for="editName">Name:</label>
+                        <input type="text" class="form-control" id="editName">
+                    </div>
+                    <div class="form-group">
+                        <label for="editArea">Area:</label>
+                        <input type="text" class="form-control" id="editArea">
+                    </div>
+                    <div class="form-group">
+                        <label for="editPopulation">Population:</label>
+                        <input type="text" class="form-control" id="editPopulation">
+                    </div>
+                    <div class="form-group">
+                        <label for="editGdp">Gdp:</label>
+                        <input type="text" class="form-control" id="editGdp">
+                    </div>
+                    <div class="form-group">
+                        <label for="editDescription">Description:</label>
+                        <input type="text" class="form-control" id="editDescription">
+                    </div>
+                    <div class="form-group">
+                        <label for="editCountry">Country:</label>
+                        <select id="editCountry" class="form-control">
+
+                        </select>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="edit()" data-dismiss="modal">Save
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Modal -->
+    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal Delete</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <input type="number" hidden id="deleteId">
+                    <div class="form-group">
+                        <label for="deleteName">Name:</label>
+                        <input type="text" class="form-control" id="deleteName">
+                    </div>
+                    <div class="form-group">
+                        <label for="deleteArea">Area:</label>
+                        <input type="text" class="form-control" id="deleteArea">
+                    </div>
+                    <div class="form-group">
+                        <label for="deletePopulation">Population:</label>
+                        <input type="text" class="form-control" id="deletePopulation">
+                    </div>
+                    <div class="form-group">
+                        <label for="deleteGdp">Gdp:</label>
+                        <input type="text" class="form-control" id="deleteGdp">
+                    </div>
+                    <div class="form-group">
+                        <label for="deleteDescription">Description:</label>
+                        <input type="text" class="form-control" id="deleteDescription">
+                    </div>
+                    <div class="form-group">
+                        <label for="deleteCountry">Country:</label>
+                        <select id="deleteCountry" class="form-control">
+
+                        </select>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="deleteCity()" data-dismiss="modal">Delete
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style="margin-top:30px">
+
+        <h2>City Manager</h2>
+
+
+        <div id="create-modal" class="html-editor-align-left">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create">
+                Add new City
+            </button>
+        </div>
+
+        <div class="container">
+            <div class="html-editor-align-right">
+                <input type="text" id="searchName" placeholder="....">
+                <button onclick="searchName()" class="btn btn-primary">
+                    Search
+                </button>
+            </div>
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Area</th>
+                <th>Population</th>
+                <th>Gdp</th>
+                <th>Description</th>
+                <th>Country</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+
+            <tbody id="tbody">
+
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
+
+<script>
+
+    show();
+    getCountry()
+
+    function getCountry() {
+        $.ajax({
+            type: "GET",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            url: "http://localhost:8080/home/list",
+            //xử lý khi thành công
+            success: function (data) {
+                let str = "";
+                for (let i = 0; i < data.length; i++) {
+                    str += `<option value="${data[i].id}" id="${data[i].id}">${data[i].name}</option>`;
+                }
+                console.log(str);
+                document.getElementById("createCountry").innerHTML = str;
+                document.getElementById("editCountry").innerHTML = str;
+                document.getElementById("deleteCountry").innerHTML = str;
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        })
+    }
+
+    function show() {
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/home",
+            //xử lý khi thành công
+            success: function (data) {
+                let str = "";
+                for (let i = 0; i < data.length; i++) {
+                    str += "<tr>"
+                    str += `<td>${data[i].id}</td>`
+                    str += `<td>${data[i].name}</td>`
+                    str += `<td>${data[i].area}</td>`
+                    str += `<td>${data[i].population}</td>`
+                    str += `<td>${data[i].gdp}</td>`
+                    str += `<td>${data[i].description}</td>`
+                    str += `<td>${data[i].country.name}</td>`
+                    str += `<td><button onclick="showEdit(${data[i].id})" type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit">Edit</button></td>`
+                    str += `<td><button onclick="showDelete(${data[i].id})" type="button" class="btn btn-primary" data-toggle="modal" data-target="#delete">Delete</button></td>`
+                    str += "</tr>"
+                }
+                document.getElementById("tbody").innerHTML = str;
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        })
+    }
+
+    function showEdit(id) {
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/home/" + id,
+            //xử lý khi thành công
+            success: function (data) {
+                document.getElementById("editName").value = data.name;
+                document.getElementById("editArea").value = data.area;
+                document.getElementById("editPopulation").value = data.population;
+                document.getElementById("editGdp").value = data.gdp;
+                document.getElementById("editDescription").value = data.description;
+                document.getElementById("editId").value = data.id;
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        })
+    }
+
+    function showDelete(id) {
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/home/" + id,
+            //xử lý khi thành công
+            success: function (data) {
+                document.getElementById("deleteName").value = data.name;
+                document.getElementById("deleteArea").value = data.area;
+                document.getElementById("deletePopulation").value = data.population;
+                document.getElementById("deleteGdp").value = data.gdp;
+                document.getElementById("deleteDescription").value = data.description;
+                document.getElementById("deleteId").value = data.id;
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        })
+    }
+
+    function searchName(){
+        let name = document.getElementById("searchName").value;
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/home/search/" + name,
+            //xử lý khi thành công
+            success: function (data) {
+                let str = "";
+                for (let i = 0; i < data.length; i++) {
+                    str += "<tr>"
+                    str += `<td>${data[i].id}</td>`
+                    str += `<td>${data[i].name}</td>`
+                    str += `<td>${data[i].areas}</td>`
+                    str += `<td>${data[i].population}</td>`
+                    str += `<td>${data[i].gdp}</td>`
+                    str += `<td>${data[i].description}</td>`
+                    str += `<td>${data[i].country.name}</td>`
+                    str += `<td><button onclick="showEdit(${data[i].id})" type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit">Edit</button></td>`
+                    str += `<td><button onclick="showDelete(${data[i].id})" type="button" class="btn btn-primary" data-toggle="modal" data-target="#delete">Delete</button></td>`
+                    str += "</tr>"
+                }
+                document.getElementById("tbody").innerHTML = str;
+                console.log(data)
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        })
+    }
+
+    function create() {
+        let name = document.getElementById("createName").value;
+        let area = document.getElementById("createArea").value;
+        let population = document.getElementById("createPopulation").value;
+        let gdp = document.getElementById("createGdp").value;
+        let description = document.getElementById("createDescription").value;
+        let countryId = document.getElementById("createCountry").value;
+
+        let city = {
+            name: name,
+            area: area,
+            population: population,
+            gdp: gdp,
+            description: description,
+            country: {
+                id: countryId
+            }
+        }
+        console.log(city);
+
+        $.ajax({
+            type: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            url: "http://localhost:8080/home",
+            data: JSON.stringify(city),
+            //xử lý khi thành công
+            success: function (data) {
+                console.log(data);
+                show()
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        })
+    }
+
+    function edit() {
+        let name = document.getElementById("editName").value;
+        let area = document.getElementById("editArea").value;
+        let population = document.getElementById("editPopulation").value;
+        let gdp = document.getElementById("editGdp").value;
+        let description = document.getElementById("editDescription").value;
+        let countryId = document.getElementById("editCountry").value;
+        let id = document.getElementById("editId").value;
+
+        let city = {
+            id: id,
+            name: name,
+            area: area,
+            population: population,
+            gdp: gdp,
+            description: description,
+            country: {
+                id: countryId
+            }
+        }
+    console.log(city);
+
+        $.ajax({
+            type: "PUT",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            url: "http://localhost:8080/home",
+            data: JSON.stringify(city),
+            //xử lý khi thành công
+            success: function (data) {
+                console.log(data);
+                show()
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        })
+    }
+
+    function deleteCity() {
+        let id = document.getElementById("deleteId").value;
+        $.ajax({
+            type: "DELETE",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            url: "http://localhost:8080/home/" + id,
+            //xử lý khi thành công
+            success: function () {
+                show()
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        })
+    }
+
+</script>
+</body>
+</html>
